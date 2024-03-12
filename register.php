@@ -19,6 +19,9 @@
     <div class="container">
         <main role="main" class="pb-3">
             <?php
+            if(isset($_SESSION["email"])){
+                header("Location: index.php");
+            }
         function provera($data) {
             $data = trim($data);
             $data = stripslashes($data);
@@ -69,17 +72,7 @@
             }
             if($valid)
             {
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "autoplac";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
+                include("database/connect.php");
                 $sql = "SELECT * FROM korisnici WHERE email = '$email'";
                 $result = $conn->query($sql);
                 if ($result->num_rows != 0) {
@@ -88,7 +81,7 @@
                     $sql = "INSERT INTO korisnici (korisnicko_ime,email, lozinka) VALUES ('$username','$email', '$pass')";
                     if ($conn->query($sql) === TRUE) {
                         $_SESSION["email"] = $email;
-                        header("Location: ../index.php");
+                        header("Location: index.php");
                     } else {
                         echo "Greška pri unosu podataka: " . $conn->error;
                     }
@@ -100,29 +93,29 @@
         }
             ?>
             
-            <div class="main row justify-content-center d-flex">
-                <p  style="height:50px"class="header text-center">Prijavite se na vaš nalog</p>
-                <div class="col-6 align-items-center d-flex flex-column">
+            <div class="main justify-content-center align-items-center flex-column d-flex">
+                <p  class="header text-center mb-5">Registrujte se na vaš nalog</p>
+                <div class="col-md-6 col-sm-9 col-12 align-items-center d-flex flex-column">
 
                     <form class=" d-flex flex-column container-fluid gap-0" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
                          
                         
-                        <div class="form-group mb-2 container-fluid">
+                        <div class="form-group mb-2 col-12">
                             <label for="username">Korisnicko ime<span class="error">*</span></label>
                             <input class="form-control" type="text" placeholder="Korisnicko ime" name="username">
                             <span class="error"><?php echo $usernameErr;?></span>
                         </div>  
-                        <div class="form-group mb-2 container-fluid">
+                        <div class="form-group mb-2 col-12">
                             <label for="email">E-mail<span class="error">*</span></label>
                             <input class="form-control" type="text" placeholder="E-mail" name="email">
                             <span class="error"><?php echo $emailErr;?></span>
                         </div>    
-                        <div class="form-group mb-2 container-fluid">
+                        <div class="form-group mb-2 col-12">
                             <label for="pass">Lozinka<span class="error">*</span></label> 
                             <input class="form-control" type="text" placeholder="Lozinka" name="pass">
                             <span class="error"><?php echo $passErr;?></span>
                         </div>
-                        <div class="form-group mb-2 container-fluid">
+                        <div class="form-group mb-2 col-12">
                             <label for="provera">Provera lozinke<span class="error">*</span></label>
                             <input class="form-control" type="text" placeholder="Ponovi lozinku" name="provera">
                             <span class="error"><?php echo $proveraErr;?></span>

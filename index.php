@@ -41,7 +41,7 @@
                                         <a type="button" class=" container-fluid btn rounded btn-primary" href="./register.php" >Registruj se</a>
                                     </div>
                                     <div class="col-5 col-md-2 mr-10">
-                                        <a style="background-color:#F0F2F5; " class=" container-fluid btn rounded text-dark btn-secondary" href="./login.php" >Prijavi se</a>
+                                        <a  class=" container-fluid btn rounded btn-secondary" href="./login.php" >Prijavi se</a>
                                     </div>';
                                 }
                             ?>
@@ -63,7 +63,7 @@
                     Želite li da naručite neki od naših automobnila?
                 </div>
                 <div class="d-flex justify-content-center align-content-center">
-                    <div class="flex-column">
+                    <div class="col-md-4 col-sm-7 col-10">
                         <?php 
                         if(isset($_SESSION["email"])){
                             echo '<div class="">
@@ -77,10 +77,10 @@
                         {
                             echo '
                             <div class="mt-4 mb-4">
-                                <a type="button" class=" container-fluid btn rounded btn-primary" href="./register.php" >Registruj se</a>
+                                <a type="button" class="container-fluid btn rounded btn-primary" href="./register.php" >Registruj se</a>
                             </div>
                             <div class="mt-4 mb-4" >
-                                <a style="background-color:#F0F2F5;" href="./login.php" class="border-none text-dark container-fluid btn rounded btn-secondary">Prijavi se</a>
+                                <a  href="./login.php" class="border-none container-fluid btn rounded btn-secondary">Prijavi se</a>
                             </div>';
                         }
                         ?>

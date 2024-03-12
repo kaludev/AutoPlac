@@ -20,10 +20,10 @@
 
                             }else{
                                 echo '<li class="ms-md-2 me-md-2 mt-2 mb-2 mt-md-0 mb-md-0 nav-item">
-                                    <a href="./login.php" type="button" style="background-color:#F0F2F5;"  class="btn rounded btn-secondary text-dark">Login</a>
+                                    <a href="./login.php" type="button" style="padding:5px"  class="btn rounded btn-secondary ">Prijavi se</a>
                                 </li>';
                                 echo '<li class="ms-md-2 me-md-2 mt-2 mb-2 mt-md-0 mb-md-0  nav-item">
-                                    <a type="button" class="btn rounded btn-primary" href="./register.php" >Registruj se</a>
+                                    <a type="button" class="btn rounded btn-primary" style="padding:5px" href="./register.php" >Registruj se</a>
                                 </li>';
                             }
                         ?>

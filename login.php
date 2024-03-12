@@ -19,6 +19,9 @@
     <div class="container">
         <main role="main" class="pb-3">
         <?php
+        if(isset($_SESSION["email"])){
+            header("Location: index.php");
+        }
         function provera($data) {
             $data = trim($data);
             $data = stripslashes($data);
@@ -75,17 +78,18 @@
             
         }
             ?>
-            <div class="main row justify-content-center align-items-center d-flex">
-                <div class="col-4 justify-content-center align-items-center d-flex flex-column">
-                    <form class="align-items-center d-flex flex-column gap-0" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-                        <div class="form-group mb-2">
-                            <label for="email">E-mail<span class="error">*</span>:</p>
-                            <input class="form-control" type="text" name="email">
+            <div class="main justify-content-center align-items-center flex-column d-flex">
+            <p  class="header text-center mb-5">Prijavite se na vaš nalog</p>
+                <div class="col-md-6 col-sm-9 col-11 justify-content-center align-items-center d-flex flex-column">
+                    <form class="align-items-center container-fluid d-flex flex-column gap-0" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
+                        <div class="form-group col-12 mb-2">
+                            <label for="email">E-mail<span class="error">*</span></label>
+                            <input class="form-control" placeholder="E-mail" type="text" name="email">
                             <span class="error"><?php echo $emailErr;?></span>
                         </div>    
-                        <div class="form-group mb-2">
-                            <p>Lozinka<span class="error">*</span>:</p> 
-                            <input class="form-control" type="text" name="pass">
+                        <div class="form-group col-12 mb-2">
+                            <label for="pass">Lozinka<span class="error">*</span></label> 
+                            <input class="form-control" placeholder="Lozinka" type="text" name="pass">
                             <span class="error"><?php echo $passErr;?></span>
                         </div>
                         <br>
