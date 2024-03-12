@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+  font-size: 14px;
+}
+*{
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    padding: 0;
+    
+}
+.nav-link {
+    font-weight: 400;
+}
+.btn{
+    --bs-btn-border-width:none !important;
+}
+.logo{
+    height: 85px;
+}
+.hero-section{
+    min-height: 540px;
+    height: 480px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/pexels-hyundai-motor-group-16466478.jpg');
+    background-size: cover;
+    margin-bottom: 150px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.header{
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -1.584px;   
+}
+
+.basic{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+@media (min-width: 576px) {
+    .rounded-lg-md {
+        border-radius: 0.5rem;
+    }
+}
