@@ -112,7 +112,7 @@
                         </div>    
                         <div class="form-group mb-2 col-12">
                             <label for="pass">Lozinka<span class="error">*</span></label> 
-                            <input class="form-control" type="text" placeholder="Lozinka" name="pass">
+                            <input class="form-control" type="password" placeholder="Lozinka" name="pass">
                             <span class="error"><?php echo $passErr;?></span>
                         </div>
                         <div class="form-group mb-2 col-12">

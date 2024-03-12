@@ -29,7 +29,7 @@
             return $data;
         }
         $imeErr=$emailErr=$proveraErr=$passErr="";
-        $ime=$email=$provera="";
+        $ime=$email=$provera=$pass="";
         $valid=false;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $valid=true;
@@ -50,7 +50,7 @@
             } else {
                 $pass = provera($_POST["pass"]);
                 if (strlen($pass)<6) {
-                    $emailErr = "pass mora imati vise od 6 karaktera";
+                    $passErr = "Šifra mora imati vise od 6 karaktera";
                     $valid=false;
                 }
             }
@@ -89,7 +89,7 @@
                         </div>    
                         <div class="form-group col-12 mb-2">
                             <label for="pass">Lozinka<span class="error">*</span></label> 
-                            <input class="form-control" placeholder="Lozinka" type="text" name="pass">
+                            <input class="form-control" placeholder="Lozinka" type="password" name="pass">
                             <span class="error"><?php echo $passErr;?></span>
                         </div>
                         <br>

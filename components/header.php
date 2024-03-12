@@ -8,10 +8,10 @@
                 </button>
                 <div class="navbar-collapse collapse d-md-inline-flex justify-content-end">
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
-                        <li class="nav-item">
+                        <li class="nav-item ms-3 me-3">
                             <a href="index.php" class="nav-link text-dark">Početna</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3 me-3">
                             <a href="oglasi.php" class="nav-link text-dark">Oglasi</a>
                             
                         </li>
@@ -19,11 +19,11 @@
                             if(isset($_SESSION['email'])){
 
                             }else{
-                                echo '<li class="ms-md-2 me-md-2 mt-2 mb-2 mt-md-0 mb-md-0 nav-item">
-                                    <a href="./login.php" type="button" style="padding:5px"  class="btn rounded btn-secondary ">Prijavi se</a>
+                                echo '<li class="ms-md-3 me-md-3 mt-2 mb-2 mt-md-0 mb-md-0 nav-item">
+                                    <a href="./login.php" type="button" style="padding:7px"  class="btn rounded btn-secondary ">Prijavi se</a>
                                 </li>';
-                                echo '<li class="ms-md-2 me-md-2 mt-2 mb-2 mt-md-0 mb-md-0  nav-item">
-                                    <a type="button" class="btn rounded btn-primary" style="padding:5px" href="./register.php" >Registruj se</a>
+                                echo '<li class="ms-md-3 me-md-3 mt-2 mb-2 mt-md-0 mb-md-0  nav-item">
+                                    <a type="button" class="btn rounded btn-primary" style="padding:7px" href="./register.php" >Registruj se</a>
                                 </li>';
                             }
                         ?>
