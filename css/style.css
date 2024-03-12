@@ -9,14 +9,18 @@ html {
     padding: 0;
     
 }
+:root{
+    --bs-primary: #0d6efd;
+}
 .nav-link {
     font-weight: 400;
 }
 .btn{
     --bs-btn-border-width:none !important;
 }
+
 .logo{
-    height: 85px;
+    height: 50px;
 }
 .hero-section{
     min-height: 540px;
@@ -27,6 +31,9 @@ html {
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+.main{
+    min-height: calc(100vh - 180px) !important;
 }
 .header{
     font-weight: 900;
@@ -39,6 +46,11 @@ html {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+}
+.error{
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(199, 52, 52);
 }
 @media (min-width: 576px) {
     .rounded-lg-md {
