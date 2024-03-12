@@ -100,33 +100,35 @@
         }
             ?>
             
-            <div class="main row justify-content-center align-items-center d-flex">
-                <div class="col-4 justify-content-center align-items-center d-flex flex-column">
-                    <form class="align-items-center d-flex flex-column gap-0" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
+            <div class="main row justify-content-center d-flex">
+                <p  style="height:50px"class="header text-center">Prijavite se na vaš nalog</p>
+                <div class="col-6 align-items-center d-flex flex-column">
+
+                    <form class=" d-flex flex-column container-fluid gap-0" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
                          
                         
-                        <div class="form-group mb-2">
-                            <label for="username">Korisnicko ime<span class="error">*</span>:</p>
-                            <input class="form-control" type="text" name="username">
+                        <div class="form-group mb-2 container-fluid">
+                            <label for="username">Korisnicko ime<span class="error">*</span></label>
+                            <input class="form-control" type="text" placeholder="Korisnicko ime" name="username">
                             <span class="error"><?php echo $usernameErr;?></span>
                         </div>  
-                        <div class="form-group mb-2">
-                            <label for="email">E-mail<span class="error">*</span>:</p>
-                            <input class="form-control" type="text" name="email">
+                        <div class="form-group mb-2 container-fluid">
+                            <label for="email">E-mail<span class="error">*</span></label>
+                            <input class="form-control" type="text" placeholder="E-mail" name="email">
                             <span class="error"><?php echo $emailErr;?></span>
                         </div>    
-                        <div class="form-group mb-2">
-                            <p>Lozinka<span class="error">*</span>:</p> 
-                            <input class="form-control" type="text" name="pass">
+                        <div class="form-group mb-2 container-fluid">
+                            <label for="pass">Lozinka<span class="error">*</span></label> 
+                            <input class="form-control" type="text" placeholder="Lozinka" name="pass">
                             <span class="error"><?php echo $passErr;?></span>
                         </div>
-                        <div class="form-group mb-2">
-                            <label for="email">Provera lozinke<span class="error">*</span>:</p>
-                            <input class="form-control" type="text" name="provera">
+                        <div class="form-group mb-2 container-fluid">
+                            <label for="provera">Provera lozinke<span class="error">*</span></label>
+                            <input class="form-control" type="text" placeholder="Ponovi lozinku" name="provera">
                             <span class="error"><?php echo $proveraErr;?></span>
                         </div> 
                         <br>
-                        <input type="submit" name="submit" class="btn btn-primary container-fluid" value="Potvrdi">
+                        <input type="submit" name="submit" class="btn btn-primary " value="Potvrdi">
                          
                         
                     </form>
@@ -141,25 +143,5 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</body>
-</html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
-</head>
-<body class="row">
-
-            
-
-<?php
-    
-
-    ?>
 </body>
 </html>
