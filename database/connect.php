@@ -1,10 +1,10 @@
 <?php
     $servername = "localhost";
-    $username = "root";
+    $usern = "root";
     $password = "";
     $dbname = "autoplac";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $usern, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

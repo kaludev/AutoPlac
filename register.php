@@ -28,8 +28,8 @@
             $data = htmlspecialchars($data);
             return $data;
         }
-        $usernameErr=$emailErr=$proveraErr=$passErr="";
-        $pass=$username=$email=$provera="";
+        $usernameErr=$emailErr=$lozinkaPonovoErr=$passErr="";
+        $pass=$username=$email=$lozinkaPonovo="";
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $valid=true;
             if (empty($_POST["username"])) {
@@ -60,25 +60,28 @@
                 }
             }
             if(empty($_POST["provera"])){
-                $proveraErr = "Niste uneli proveru";
+                $lozinkaPonovoErr = "Niste uneli proveru";
                 $valid=false;
             }
             else {
-                $provera= provera($_POST["provera"]);
-                if ($provera!=$pass) {
-                    $proveraErr = "Ne podudaraju se sifre";
+                $lozinkaPonovo= provera($_POST["provera"]);
+                if ($lozinkaPonovo!=$pass) {
+                    $lozinkaPonovoErr = "Ne podudaraju se sifre";
                     $valid=false;
                 }
             }
             if($valid)
             {
                 include("database/connect.php");
-                $sql = "SELECT * FROM korisnici WHERE email = '$email'";
+                $sql = "SELECT * FROM user WHERE email = '$email'";
                 $result = $conn->query($sql);
                 if ($result->num_rows != 0) {
                     echo "Vrednost već postoji u bazi.";
                 } else {
-                    $sql = "INSERT INTO korisnici (korisnicko_ime,email, lozinka) VALUES ('$username','$email', '$pass')";
+                    $hashedPass = password_hash($pass,PASSWORD_DEFAULT);
+                    var_dump($hashedPass);
+                    $sql = "INSERT INTO user (username,email, password) VALUES ('$username','$email', '$hashedPass')";
+                    var_dump($sql);
                     if ($conn->query($sql) === TRUE) {
                         $_SESSION["email"] = $email;
                         header("Location: index.php");
@@ -118,7 +121,7 @@
                         <div class="form-group mb-2 col-12">
                             <label for="provera">Provera lozinke<span class="error">*</span></label>
                             <input class="form-control" type="text" placeholder="Ponovi lozinku" name="provera">
-                            <span class="error"><?php echo $proveraErr;?></span>
+                            <span class="error"><?php echo $lozinkaPonovoErr;?></span>
                         </div> 
                         <br>
                         <input type="submit" name="submit" class="btn btn-primary " value="Potvrdi">
@@ -132,7 +135,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - AutoPlac - <a href="index.php">Pocetna</a>
+            &copy; 2024 - AutoPlac
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

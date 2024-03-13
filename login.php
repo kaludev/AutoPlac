@@ -57,15 +57,17 @@
             if($valid)
             {
                 include('database/connect.php');
-                $sql = "SELECT * FROM korisnici WHERE email = '$email'";
+                $sql = "SELECT * FROM user WHERE email = '$email'";
                 $result = $conn->query($sql); 
                 
                 if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $dbpass=$row["lozinka"];
-                    if ($dbpass == $pass) {
+                    $dbpass=$row["password"];
+                    var_dump($dbpass);
+                    var_dump($pass);
+                    if (password_verify($pass,$dbpass)) {
                         $_SESSION["email"] = $email;
-                        header("Location: ../index.php");
+                        header("Location: index.php");
                     } else {
                         echo "Pogresna ifra ";
                     }
@@ -102,10 +104,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - AutoPlac - <a href="./oglasi.php">Oglasi</a>
+            &copy; 2024 - AutoPlac 
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
 </body>
 </html>

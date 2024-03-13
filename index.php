@@ -18,20 +18,21 @@
         ?>
     <div class="container">
         <main role="main" class="pb-3">
-        <div class="hero-section row rounded-lg-md flex justify-content-start align-items-center mt-5">
+            <div class="hero-section row rounded-lg-md flex justify-content-start align-items-center mt-5">
                 <div class="column mt-5">
-                    <div class="ms-3 mb-5 text-weight-bold">
+                    <div class="ms-3  text-weight-bold">
                         <p class="header text-light mb-4">Najveći izbor automobila kod nas</p>
                         <p class="basic text-light mb-4">Izaberite vaš budući automobil kod nas</p>
                         <div class="row flex justify-content-start">
                             <?php 
+                                // logovan i nelogovan user
                                 if(isset($_SESSION["email"])){
-                                    echo '  
+                                    echo '
                                         <div class="col-5 col-md-2 mr-10">
-                                            <a type="button" class=" container-fluid btn rounded btn-primary" asp-area="Identity" asp-page="/Account/Register" href="./register.php" >Registruj se</a>
+                                            <a type="button" class=" container-fluid btn rounded btn-primary" href="./oglasi.php" >Oglasi</a>
                                         </div>
                                         <div class="col-5 col-md-2 mr-10">
-                                            <a class="container-fluid btn rounded btn-secondary" asp-area="Identity" asp-page="/Account/Login" href="./login.php" >Prijavi se</a>
+                                            <a type="button" class=" container-fluid btn rounded btn-secondary" href="./narudzbine.php" >Narudzbine</a>
                                         </div>';
                                 }
                                 else
@@ -46,12 +47,49 @@
                                 }
                             ?>
                         </div>
-                        
                     </div>
-                    
                 </div>
             </div>
-
+            <div class="container mb-5 flex row">
+                <?php 
+                    include('./database/connect.php');
+                    $sql = 'SELECT oglasi.id,oglasi.naslov,oglasi.cena,oglasi.marka,oglasi.model,oglasi.url_slike,oglasi.godina
+                        FROM oglasi
+                        LEFT JOIN narudzbina ON oglasi.id = narudzbina.oglas_id
+                        WHERE narudzbina.oglas_id IS NULL AND oglasi.premium=1;';
+                    // uzima oglase iz baze
+                    $result= $conn->query($sql);
+                    if($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            //ispis oglasa
+                            echo '<div class="col-12 col-md-6 col-lg-3 justify-content-md-start justify-content-center align-items-md-start align-items-center text-md-left text-center d-flex flex-column">
+                                <div class=" rounded col-12 mb-2 mt-2">
+                                    <img class="slika" src="images/'.$row['url_slike'].'" alt="'.$row['url_slike'].'">
+                                </div>
+                                <div class="naslov col-12 mb-2 mt-2">
+                                    <p>'.$row['naslov'].'</p>
+                                </div>
+                                <div class="cena col-12 mb-2 mt-2">
+                                    <p>$'.$row['cena'].'</p>
+                                </div>
+                                <div class="row col-12">';
+                                echo '<div class="col-12  col-md-6 mt-2 mb-2 mt-md-0 mb-md-0">
+                                        <a type="button" class=" container-fluid btn rounded btn-secondary  " href="./oglas.php?id='.$row['id'].'" >Detalji</a>
+                                    </div>';
+                                if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
+                                    echo '<div class="col-12  col-md-6 mr-10">
+                                        <a type="button" class=" container-fluid btn rounded btn-primary" href="./naruci.php?id='.$row['id'].'" >Naruci</a>
+                                    </div>';
+                                }
+                                echo '</div>';
+                                
+                            echo '</div>';
+                        }
+                    }else{  
+                        echo '<p class="header">Nema premium oglasa u bazi</p>';
+                    }
+                ?>
+            </div>
             <div class="container mt-5 mb-5 flex flex-column">
                 <p class="header mt-5 mb-5">Test vožnja svakog automobila</p>
                 <p class="basic mt-5 mb-5">Svaki od nasih automobila možete vratiti u roku od 7 dana ili 500 km</p>
@@ -59,18 +97,20 @@
             </div>
 
             <div class="container mt-5 mb-5 pt-5 pb-5 flex flex-column">
-                <div class="mt-5 mb-5 text-black container-fluid" style="font-family: 'Work Sans'; font-style: normal;font-weight: 900;font-size: 36px;line-height: 45px;text-align: center;letter-spacing: -1.188px;color: #121217;">
+                <div class=" header2 mt-5 mb-5 text-black container-fluid text-center" >
                     Želite li da naručite neki od naših automobnila?
                 </div>
                 <div class="d-flex justify-content-center align-content-center">
                     <div class="col-md-4 col-sm-7 col-10">
                         <?php 
+                        // logovan i nelogovan user
                         if(isset($_SESSION["email"])){
-                            echo '<div class="">
-                                <a type="button" class=" container-fluid btn rounded btn-primary" asp-area="Identity" asp-page="/Account/Register" href="./register.php" >Registruj se</a>
+                            echo '
+                            <div class="mt-4 mb-4">
+                                <a type="button" class="container-fluid btn rounded btn-primary" href="./oglasi.php" >Oglasi</a>
                             </div>
-                            <div class="">
-                                <a class="container-fluid btn rounded btn-secondary" asp-area="Identity" asp-page="/Account/Login" href="./login.php" >Prijavi se</a>
+                            <div class="mt-4 mb-4" >
+                                <a  href="./narudzbine.php" class="border-none container-fluid btn rounded btn-secondary">Narudzbine</a>
                             </div>';
                         }
                         else
@@ -94,10 +134,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - AutoPlac - <a href="./oglasi.php">Oglasi</a>
+            &copy; 2024 - AutoPlac
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>

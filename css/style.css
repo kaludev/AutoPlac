@@ -11,24 +11,24 @@ html {
     
 }
 .btn-primary{
-    background-color: #e31c1c;
+    background-color: #d66030;
     padding: 10px;
     border: 1px solid transparent;
 }
 .btn-primary:hover{
     background-color: #F9F9F9;
-    color: #e31c1c;
-    border: 1px solid #e31c1c;
+    color: #d66030;
+    border: 1px solid #d66030;
 }
 
 .btn-secondary{
     background-color: #F9F9F9;
     padding: 10px;
-    color: #e31c1c;
-    border: 1px solid #e31c1c;
+    color: #d66030;
+    border: 1px solid #d66030;
 }
 .btn-secondary:hover{
-    background-color: #e31c1c ;
+    background-color: #d66030 ;
     border: 1px solid transparent;
     color: #F9F9F9;
 }
@@ -55,15 +55,15 @@ input{
     color: #94535a !important;
 }
 input[type="submit"]{
-    background-color: #e31c1c;
+    background-color: #d66030;
     color: white !important;
     font-size: 20px;
     width: 100%;
 }
 input[type="submit"]:hover{
     background-color: white;
-    color: #e31c1c !important;
-    border: 1px solid #e31c1c;
+    color: #d66030 !important;
+    border: 1px solid #d66030;
     width: 100%;
     font-size: 20px;
 }
@@ -75,7 +75,6 @@ input[type="submit"]:hover{
     height: 480px;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/pexels-hyundai-motor-group-16466478.jpg');
     background-size: cover;
-    margin-bottom: 150px;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -90,18 +89,65 @@ input[type="submit"]:hover{
     letter-spacing: -1.584px;   
 }
 
+.header2{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: -1.188px;
+}
+
 .basic{
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
 }
+.naslov{
+    display: block;
+    height: 50px;
+    
+}
+.naslov p{
+    font-weight: 700;
+}
+.cena{
+    display: block;
+    height: 50px;
+    color: #d66030;
+}
+
 .error{
     font-size: 16px;
     line-height: 24px;
     color: rgb(199, 52, 52);
 }
+.slika {
+    max-height:250px;
+    max-width: 20vw;
+    border-radius: 15px;
+}
+.poster{
+    min-height: 540px;
+    background-size: cover;
+    background-position: center;
+}
+.text-md-left {
+    text-align: left !important;
+}
 @media (min-width: 576px) {
     .rounded-lg-md {
         border-radius: 0.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .text-md-left{
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .slika{
+        max-height:250px;
+        max-width: none;
     }
 }

@@ -22,11 +22,12 @@
                 <div class="container mb-5 flex row">
                     <?php 
                         include('./database/connect.php');
-                        
-                        $sql = 'SELECT oglasi.id,oglasi.naslov,oglasi.cena,oglasi.marka,oglasi.model,oglasi.url_slike,oglasi.godina
-                        FROM oglasi
-                        LEFT JOIN narudzbina ON oglasi.id = narudzbina.oglas_id
-                        WHERE narudzbina.oglas_id IS NULL;';
+                        $email=$_SESSION["email"];
+                        $sql = "SELECT narudzbina.*, oglasi.*
+                        FROM narudzbina
+                        JOIN oglasi ON narudzbina.oglas_id = oglasi.id
+                        JOIN user ON narudzbina.user_id = user.id
+                        WHERE user.email = '$email';";
                         
                         $result= $conn->query($sql);
                         if($result->num_rows > 0) {
@@ -51,7 +52,7 @@
                                     </div>';
                                     if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
                                         echo '<div class="col-12  col-md-6 mr-10">
-                                            <a type="button" class=" container-fluid btn rounded btn-primary" href="./naruci.php?id='.$row['id'].'" >Naruci</a>
+                                            <a type="button" class=" container-fluid btn rounded btn-primary" href="./otkazi.php?id='.$row['id'].'" >Otkazi</a>
                                         </div>';
                                     }
                                     echo '</div>';
@@ -59,11 +60,11 @@
                                 echo '</div>';
                             }
                         }else{  
-                            echo '<p class="header text-center">Svi automobili su prodati</p>
+                            echo '<p class="header text-center ">Nema narudzbina</p>
                             <div class="d-flex justify-content-center align-content-center">
                                             <div class="col-md-4 col-sm-7 col-10">
                             <div class="mt-4 mb-4">
-                                            <a type="button" class="container-fluid btn rounded btn-primary" href="./index.php" >Pocetna</a>
+                                            <a type="button" class="container-fluid btn rounded btn-primary" href="./oglasi.php" >Oglasi</a>
                                         </div>
                                     </div>
                                 </div>';
