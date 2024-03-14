@@ -17,11 +17,16 @@
                         </li>
                         <?php 
                             if(isset($_SESSION['email'])){
+                                echo '
+                                <li class="nav-item ms-3 me-3">
+                                    <a href="objavi.php" class="nav-link text-dark">Objavi auto</a>
+                                </li>
+                                ';
                                 echo '<li class="ms-md-3 me-md-3 mt-2 mb-2 mt-md-0 mb-md-0 nav-item">
                                     <a href="./narudzbine.php" type="button" style="padding:7px"  class="btn rounded btn-secondary ">Narudzbine</a>
                                 </li>';
                                 echo '<li class="ms-md-3 me-md-3 mt-2 mb-2 mt-md-0 mb-md-0  nav-item">
-                                    <a type="button" class="btn rounded btn-primary" style="padding:7px" href="./logout.php" >Odjavi se</a>
+                                    <a type="button" class="btn rounded btn-primary" style="padding:7px" href="./handlers/logout.php" >Odjavi se</a>
                                 </li>';
                             }else{
                                 echo '<li class="ms-md-3 me-md-3 mt-2 mb-2 mt-md-0 mb-md-0 nav-item">

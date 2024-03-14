@@ -96,6 +96,15 @@ input[type="submit"]:hover{
     line-height: 45px;
     letter-spacing: -1.188px;
 }
+.header3{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: -1.188px;
+    border-bottom: 1px solid #d66030;
+}
+
 
 .basic{
     font-weight: 400;
@@ -115,6 +124,12 @@ input[type="submit"]:hover{
     height: 50px;
     color: #d66030;
 }
+.text-primary{
+    color: #d66030 !important;
+}
+.kolona div{
+    border-bottom: 1px solid #d66030;
+}
 
 .error{
     font-size: 16px;
@@ -130,6 +145,7 @@ input[type="submit"]:hover{
     min-height: 540px;
     background-size: cover;
     background-position: center;
+    
 }
 .text-md-left {
     text-align: left !important;
